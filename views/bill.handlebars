@@ -1,0 +1,76 @@
+<div class='row'>
+	<h1> Calls </h1>
+	  <div class="row">
+	    <div class="col s12">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#calls">Call log </a></li>
+	        <li class="tab col s3"><a class="active" href="#test2">Networks</a></li>
+	        <li class="tab col s3"><a href="#test4">Totals</a></li>
+	      </ul>
+	    </div>
+	    
+	    <div id="test2" class="col s12">
+
+	         {{#providers}}
+	    	 <ul class="collapsible col s12 m4" data-collapsible="accordion">
+			    <li>
+			      <div class="collapsible-header">
+			      		<i class="material-icons">settings_input_antenna</i>{{name}}
+			       		<span class='chip blue lighten-1'>{{total}}</span>
+			      </div>
+
+			      <div class="collapsible-body">
+			      	<ul class="collection">
+			      	 {{#calls}}
+				      <li class="collection-item center">
+				        <i class="material-icons left">contact_phone</i>
+				      	{{number}}
+				      </li>
+			      	 {{/calls}}
+				      
+				    </ul>
+			      </div>
+			    </li>
+			  </ul>
+			 {{/providers}}
+	    </div>
+	   
+	    <div id="test4" class="col s12">
+		    <ul class="collection">
+		    	   {{#totals}}
+				    <li class="collection-item avatar">
+				    <i class="green material-icons circle">phone_in_talk</i>
+				      <span class="title"><b>{{name}}</b></span>
+				       <br>
+				         <h4 class='blue-text lighten-3'>{{duration}}</h4>
+				     
+				      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+				    </li>
+				    {{/totals}}
+			</ul>
+	   </div>
+
+	  </div>
+
+
+
+
+
+    
+	<table id='calls' class='white small col m12 '>
+		<thead class='red darken-1'>
+			<td><b> Date </b></td>			
+			<td><b> Number </b></td>
+			<td><b> Duration </b></td>
+		</thead>
+		<tbody>
+		{{#calls}}
+			<tr>
+				<td><i class="material-icons left">date_range</i>{{date}}</td>
+				<td><i class="material-icons left">dialpad</i>{{number}}</td>
+				<td><i class="material-icons left ">timelapse</i>{{duration}}</td>
+			</tr>
+		{{/calls}}
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,28 @@
+{
+  "name": "ItemisedBill",
+  "version": "0.0.0",
+  "description": "Cellphon bill",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AyabongaQwabi/ItemisedBill.git"
+  },
+  "keywords": [
+    "filter"
+  ],
+  "author": "Ayabonga Qwabi",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/AyabongaQwabi/ItemisedBill/issues"
+  },
+  "dependencies": {
+    "express": "~4.13.3",
+    "express-handlebars": "~2.0.1"
+  }
+}
