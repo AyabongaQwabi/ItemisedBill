@@ -2,20 +2,20 @@ var files = require('fs')
 exports.getCalls = function(csv){
 	var calls=[]
 	csv = files.readFileSync(csv,'utf8')
-			   .split('\r')
+		   .split('\r')
 	           .slice(1)   
-			   .forEach(function(call){
+		   .forEach(function(call){
 			    	if(call){calls.push({date:call.split(',')[0],provider:call.split(',')[1],number:call.split(',')[2],duration:call.split(',')[3]})}
-			    })
+	            })
 
 	return calls;
 }
 exports.howManyCalls = function(csv,query){
 	var calls=[]
 	csv = files.readFileSync(csv,'utf8')
-			   .split('\r')
+	           .split('\r')
 	           .slice(1)   
-			   .forEach(function(call){			   	    
+	           .forEach(function(call){			   	    
 			    	if(!query ){
 			    		if(call){
 			    			calls.push({date:call.split(',')[0],provider:call.split(',')[1],number:call.split(',')[2],duration:call.split(',')[3]})
@@ -24,16 +24,16 @@ exports.howManyCalls = function(csv,query){
 			        else if(call.split(',')[0] == query || call.split(',')[1] ==query || call.split(',')[2]==query || call.split(',')[3]==query){
 			        	calls.push({date:call.split(',')[0],provider:call.split(',')[1],number:call.split(',')[2],duration:call.split(',')[3]})
 			        }
-			    })
+	           })
     
 	return calls.length;
 }
 exports.getAllBy = function(csv,query){
 	var calls=[]
 	csv = files.readFileSync(csv,'utf8')
-			   .split('\r')
+	           .split('\r')
 	           .slice(1)   
-			   .forEach(function(call){
+		   .forEach(function(call){
 			    	if(!query ){
 			    		if(call){
 			    			calls.push({date:call.split(',')[0],provider:call.split(',')[1],number:call.split(',')[2],duration:call.split(',')[3]})
@@ -42,7 +42,7 @@ exports.getAllBy = function(csv,query){
 			        else if(call.split(',')[0] == query || call.split(',')[1] ==query || call.split(',')[2]==query || call.split(',')[3]==query){
 			        	calls.push({date:call.split(',')[0],provider:call.split(',')[1],number:call.split(',')[2],duration:call.split(',')[3]})
 			        }
-			    })
+	           })
 
 	return calls;
 }
@@ -53,9 +53,9 @@ exports.getTotal =function(query,calls){
 			calls.forEach(function(call){
 				if(totals[call.provider]==undefined){
 					totals[call.provider]={
-											name:call.provider,
-											duration:call.duration
-										  }			
+								name:call.provider,
+								duration:call.duration
+							      }			
 				}
 				else{
 					totals[call.provider].duration = addDuration(totals[call.provider].duration,call.duration);
@@ -95,11 +95,11 @@ exports.getProviders = function(csv){
 	var calls=[]
 	var totals={}
 	csv = files.readFileSync(csv,'utf8')
-			   .split('\r')
+		   .split('\r')
 	           .slice(1)   
-			   .forEach(function(call){
+	           .forEach(function(call){
 			    	if(call){calls.push({date:call.split(',')[0],provider:call.split(',')[1],number:call.split(',')[2],duration:call.split(',')[3]})}
-			    })
+	            })
 
 	calls.forEach(function(call){
 				if(totals[call.provider]==undefined){
@@ -127,9 +127,9 @@ exports.getProviders = function(csv){
 
 function addDuration(dur1,dur2){
 	
-	var newDur ={hours:0,mins:0,secs:0}
-	dur1 = {hours:dur1.substring(0,2),mins:dur1.substring(3,5),secs:dur1.substring(6,8)}
-	dur2 = {hours:dur2.substring(0,2),mins:dur2.substring(3,5),secs:dur2.substring(6,8)}
+    var newDur ={hours:0,mins:0,secs:0}
+    dur1 = {hours:dur1.substring(0,2),mins:dur1.substring(3,5),secs:dur1.substring(6,8)}
+    dur2 = {hours:dur2.substring(0,2),mins:dur2.substring(3,5),secs:dur2.substring(6,8)}
     newDur.secs  = parseInt(dur1.secs)+parseInt(dur2.secs),
     newDur.mins  = parseInt(dur1.mins)+parseInt(dur2.mins),
     newDur.hours = parseInt(dur1.hours)+parseInt(dur2.hours);
